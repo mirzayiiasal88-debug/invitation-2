@@ -1,63 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitation</title>
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: #6d0f18;
-      overflow: hidden;
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #6d0f18;
+}
 
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+#start {
+  position: fixed;
+  inset: 0;
+  background: #6d0f18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
 
-    #openButton {
-      background: transparent;
-      color: #d9b66f;
-      border: 1.5px solid #d9b66f;
-      border-radius: 50px;
-      padding: 17px 60px;
-      font-family: Georgia, serif;
-      font-size: 28px;
-      letter-spacing: 4px;
-      cursor: pointer;
-    }
-  </style>
+#openButton {
+  background: transparent;
+  color: #d9b66f;
+  border: 1.5px solid #d9b66f;
+  border-radius: 50px;
+  padding: 17px 60px;
+  font-family: Georgia, serif;
+  font-size: 28px;
+  letter-spacing: 4px;
+}
+
+#invitation {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: none;
+  background: white;
+}
+
+#music {
+  display: none;
+}
+</style>
 </head>
 
 <body>
 
+<div id="start">
   <button id="openButton">OPEN</button>
+</div>
 
-  <audio id="music" preload="auto">
-    <source src="Arose%20mahtab%20.mov">
-  </audio>
+<iframe
+  id="invitation"
+  src="https://www.invitedrop.com/i/896d8a99-e9eb-4ed6-8505-0fb7fe46d767"
+  allow="autoplay; fullscreen"
+  allowfullscreen>
+</iframe>
 
-  <script>
-    const button = document.getElementById("openButton");
-    const music = document.getElementById("music");
+<video id="music" loop playsinline preload="auto">
+  <source src="Arose%20mahtab%20.mov" type="video/quicktime">
+</video>
 
-    button.addEventListener("click", function () {
+<script>
+const button = document.getElementById("openButton");
+const start = document.getElementById("start");
+const invitation = document.getElementById("invitation");
+const music = document.getElementById("music");
 
-      music.play().catch(() => {});
-
-      setTimeout(function () {
-        window.location.href =
-          "https://www.invitedrop.com/i/896d8a99-e9eb-4ed6-8505-0fb7fe46d767";
-      }, 300);
-
-    });
-  </script>
+button.addEventListener("click", function () {
+  music.play().catch(function(){});
+  start.style.display = "none";
+  invitation.style.display = "block";
+});
+</script>
 
 </body>
 </html>
